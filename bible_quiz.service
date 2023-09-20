@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 User=ubuntu
-WorkingDirectory=/home/ubuntu/bible-quiz-webapp
+WorkingDirectory=/home/ubuntu/git/ekklesia-bible-quiz
 ExecStart=/home/ubuntu/.local/bin/gunicorn --workers 1 --bind :5000 api.v1.app:app
 StandardError=file:/tmp/biblequiz-error.log
 StandardOutput=file:/tmp/biblequiz-access.log
