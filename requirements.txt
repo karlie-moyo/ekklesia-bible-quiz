@@ -1,0 +1,18 @@
+# ----------------------------------------------------------------
+# PIP Dependencies, install using the following:
+# $ pip install -r requirements.txt
+# ----------------------------------------------------------------
+
+sqlalchemy
+mysqlclient
+flask
+flask_cors
+gunicorn
+python-dotenv
+requests
+flask-swagger-ui
+flasgger
+alembic
+httplib2
+redis
+jinja2
