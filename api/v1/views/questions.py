@@ -9,8 +9,9 @@ from models.result import Result
 from models.user import User
 from models import storage
 from random import choice
+from sqlalchemy.exc import IntegrityError
 
-QUESTION_PER_ROUND = 20
+QUESTION_PER_ROUND = 3
 
 
 @app_views.route('/questions', methods=['GET'])
@@ -62,7 +63,16 @@ def grade_questions():
         questions.append(q_dict)
 
     result = Result(user=user, score=user_score)
-    result.save()
+    try:
+        result.save()
+    except IntegrityError as exc:
+        storage.rollback()
+        return jsonify({
+            "status": "error",
+            "message": "Integrity Error: " + str(exc),
+            "data": None
+        }), 422
+
     return jsonify({
         "status": "success",
         "message": "Questions graded successfully",
