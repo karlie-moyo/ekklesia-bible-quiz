@@ -59,7 +59,7 @@ def grade_questions():
 
         q_dict = question.to_dict()
         q_dict.update({'user_answer': answer_id,
-                      'correct_answer': question.get_correct_answer().id if question.get_correct_answer() is not None else None})
+                      'correct_answer': question.get_correct_answer().id})
         questions.append(q_dict)
 
     result = Result(user=user, score=user_score)
