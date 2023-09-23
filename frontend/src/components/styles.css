@@ -1,0 +1,30 @@
+.CenteredRectangle {
+  min-width: 70vw;
+  padding: 25px;
+}
+
+@media (min-width: 1200px) {
+  /* Large screen size, e.g., 1200px and above */
+  .CenteredRectangle {
+    padding: 75px;
+  }
+}
+
+.question-text {
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.display-6 {
+  font-size: 18px;
+}
+
+.wrong-answer {
+  font-weight: 700;
+  color: var(--bs-danger);
+}
+
+.correct-answer {
+  font-weight: 700;
+  color: var(--bs-success);
+}

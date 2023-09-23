@@ -11,7 +11,7 @@ from models import storage
 from random import choice
 from sqlalchemy.exc import IntegrityError
 
-QUESTION_PER_ROUND = 3
+QUESTION_PER_ROUND = 25
 
 
 @app_views.route('/questions', methods=['GET'])

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Users URI Module"""
 
-from flask import abort, g
+from flask import abort, g, session
 from api.v1.views import (
     app_views, storage, jsonify, postdata, login_required)
 from models.user import User
@@ -65,6 +65,8 @@ def create_users():
         storage.rollback()
         user = storage.match(User, email=user_data.get('email'))
 
+    session['id'] = user.id
+
     return jsonify({
         "status": "success",
         "message": "User created successfully",
@@ -127,3 +129,14 @@ def delete_user(user_id):
         "message": "User deleted successfully",
         "data": None
     }), 200
+
+
+@app_views.route('/users/me', methods=['GET'])
+@login_required()
+def get_active_user():
+    """Return active user data"""
+    return jsonify({
+        "status": "success",
+        "message": "User retrieved successfully",
+        "data": g.user.to_dict(detailed=True)
+    })
