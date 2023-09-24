@@ -1,4 +1,4 @@
-Eklessia Bible Quiz
+Ekklesia Bible Quiz
 ![WhatsApp Image 2023-09-24 at 10 50 40](https://github.com/Karlie-crypto/ekklesia-bible-quiz/assets/110098940/2fcc195b-1905-44d9-bd65-fa28ab3721b4)
 
 
