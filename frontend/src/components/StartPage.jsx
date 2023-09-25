@@ -6,6 +6,10 @@ export default function StartPage() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
+  if (localStorage.getItem('email')) {
+    window.location = '/questions';
+  }
+
   const handleSubmit = () => {
     if (name === '' || email === '') {
       showToast('Name or Email cannot be blank!');

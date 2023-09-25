@@ -1,5 +1,6 @@
 import React from 'react';
 import img from '../../static/religious-summer-camp.png';
+import BackgroundImage from '../../components/BackgroundImage';
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
               Scriptures.
             </p>
 
-            <small className="text-muted">
+            <small>
               Ekklesia means the called-out ones dedicated to the Lord. Enjoy!
             </small>
             <div>
@@ -27,7 +28,10 @@ export default function Home() {
                 <a href="/start" className="btn btn-lg btn-primary me-4 mb-2">
                   Start Quiz
                 </a>
-                <a href="/" className="btn btn-lg btn-secondary me-4 mb-2">
+                <a
+                  href="/leaderboards"
+                  className="btn btn-lg btn-secondary me-4 mb-2"
+                >
                   Show Leader Boards
                 </a>
               </div>
@@ -38,6 +42,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <BackgroundImage imageUrl="https://img.freepik.com/premium-photo/happy-epiphany-day-three-kings-day-christian-feast-day-generative-ai_870262-12465.jpg?size=626&ext=jpg&ga=GA1.1.1874357867.1690841151&semt=ais" />
     </>
   );
 }

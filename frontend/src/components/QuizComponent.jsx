@@ -59,7 +59,7 @@ export default function QuizComponent() {
         <div className="alert alert-success" role="alert">
           <strong>[You scored {`${score} out of ${questions.length}`}]</strong>{' '}
           {score < questions.length / 3 && score !== 0
-            ? "Great effort! Keep studying and you'll improve. You're on the right path to mastering the Bible. 🤗🤗"
+            ? "Great effort! Keep studying and you'll improve. You're on the right path to mastering the Scripture. 🤗🤗"
             : score > questions.length / 3 && score < questions.length
             ? "Well done! You're making good progress. Keep going, and you'll become even more knowledgeable about the Bible. 🎉🎉"
             : score === questions.length
@@ -121,55 +121,57 @@ export default function QuizComponent() {
             );
           })}
         </div>
-        <div>
-          <input
-            type="button"
-            value="Prev"
-            className="btn btn-md btn-secondary me-3 mt-3"
-            onClick={() => {
-              if (index === 0) return;
-              setIndex(index - 1);
-            }}
-          />
-          {index + 1 < questions.length ? (
+        <div className="row">
+          <div className="col-md">
             <input
               type="button"
-              value="Next"
+              value="Prev"
               className="btn btn-md btn-secondary me-3 mt-3"
               onClick={() => {
-                if (Object.keys(answers).includes(questions[index].id)) {
-                  setIndex(index + 1);
-                } else {
-                  showToast('Answer this question before proceeding.');
-                }
+                if (index === 0) return;
+                setIndex(index - 1);
               }}
             />
-          ) : score === null ? (
-            <input
-              type="button"
-              value="Submit"
-              className="btn btn-md btn-danger me-3 mt-3"
-              onClick={handleQuizSubmit}
-            />
-          ) : (
-            <input
-              type="button"
-              value="Start Again"
-              className="btn btn-md btn-danger me-3 mt-3"
-              onClick={() => (window.location = '/questions')}
-            />
-          )}
-
-          {score !== null ? (
+            {index + 1 < questions.length ? (
+              <input
+                type="button"
+                value="Next"
+                className="btn btn-md btn-secondary me-3 mt-3"
+                onClick={() => {
+                  if (Object.keys(answers).includes(questions[index].id)) {
+                    setIndex(index + 1);
+                  } else {
+                    showToast('Answer this question before proceeding.');
+                  }
+                }}
+              />
+            ) : (
+              ''
+            )}
+          </div>
+          <div className="col-md d-flex justify-content-end">
             <input
               type="button"
               value="Home"
-              className="btn btn-md btn-primary me-3 mt-3"
+              className="btn btn-md btn-primary me-3 mt-3 ms-auto"
               onClick={() => (window.location = '/')}
             />
-          ) : (
-            ''
-          )}
+            {score === null ? (
+              <input
+                type="button"
+                value="Submit"
+                className="btn btn-md btn-danger me-3 mt-3"
+                onClick={handleQuizSubmit}
+              />
+            ) : (
+              <input
+                type="button"
+                value="Start Again"
+                className="btn btn-md btn-danger me-3 mt-3"
+                onClick={() => (window.location = '/questions')}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>

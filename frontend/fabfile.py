@@ -12,8 +12,8 @@ import os
 def do_pack():
     """Compress the contents of build"""
 
-    #  create `versions` dir if not exists
-    # local('mkdir -p versions')
+    # create `versions` dir if not exists
+    local('mkdir -p versions')
     # local('mkdir versions')
 
     #  update build before packing
