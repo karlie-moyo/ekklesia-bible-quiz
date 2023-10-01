@@ -46,7 +46,7 @@ Vary: Cookie
 
 ### /questions
 
-#### GET: returns a list (20 questions) of quiz questions
+#### GET: returns a list (25 questions) of quiz questions
 
 - body: null
 - header: null
