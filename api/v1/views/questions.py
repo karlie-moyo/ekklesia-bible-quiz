@@ -54,8 +54,9 @@ def grade_questions():
     for question_id, answer_id in data.items():
         question: Question = storage.get(Question, question_id)
         answer: Answer = storage.get(Answer, answer_id)
-        if answer in question.answers and answer.is_correct:
-            user_score += 1
+        if answer in question.answers:
+            if answer.is_correct:
+                user_score += 1
 
         q_dict = question.to_dict()
         q_dict.update({'user_answer': answer_id,
