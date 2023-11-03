@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from models.answer import Answer
 from models.question import Question
 from models.result import Result
+import uuid
 
 load_dotenv()
 
@@ -101,11 +102,19 @@ class DBStorage:
         """close the current db session"""
         self.__session.remove()
 
-    def get(self, cls, id, attr=None):
+    def get(self, cls, id=None, attr=None):
         """
         Returns a `obj` of `cls` with a matching `id`,
         or None if not exists.
         """
+        # checks if id is None
+        if id is None:
+            return None
+
+        # gracefully handles uuid for id
+        if isinstance(id, uuid.UUID):
+            id = str(id)
+
         if cls not in classes:
             return None
         if attr is not None:
