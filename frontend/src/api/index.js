@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  // baseURL: `http://kamvamindpal.com/v1/`,
+  // baseURL: `http://localhost:5000/v1/`,
   baseURL: `https://api.eklessia.com/v1/`,
   withCredentials: true,
 });

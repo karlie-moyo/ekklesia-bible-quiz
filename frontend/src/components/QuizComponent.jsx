@@ -5,11 +5,17 @@ import api from '../api';
 import { showToast } from './Toast';
 import './styles.css';
 
+function zfill(number, width) {
+  const numString = String(number);
+  return '0'.repeat(Math.max(0, width - numString.length)) + numString;
+}
+
 export default function QuizComponent() {
   const [questions, setQuestions] = useState([]);
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [score, setScore] = useState(null);
+  const [timer, setTimer] = useState(null);
 
   useEffect(() => {
     if (!localStorage.getItem('email')) {
@@ -19,6 +25,7 @@ export default function QuizComponent() {
       .get('/questions')
       .then((response) => {
         setQuestions(response.data.data.questions);
+        setTimer(response.data.data.questions.length * 1);
       })
       .catch((error) => {
         showToast(error);
@@ -33,9 +40,21 @@ export default function QuizComponent() {
 
   const handleQuizSubmit = () => {
     if (Object.keys(answers).length !== questions.length) {
-      showToast('All questions must me answered!');
-      return;
+      if (timer !== 0) {
+        showToast('All questions must me answered!');
+        return;
+      } else {
+        console.log(questions);
+        console.log(answers);
+        for (let q of questions) {
+          if (!answers.hasOwnProperty(q.id)) {
+            answers[q.id] = null;
+          }
+        }
+      }
     }
+    setTimer(null);
+
     showToast('Submitting quiz...');
     const headers = { email: localStorage.getItem('email') };
     api
@@ -49,6 +68,22 @@ export default function QuizComponent() {
         showToast(error);
       });
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (timer !== null) {
+        setTimer((x) => x - 1);
+      }
+    }, 1000);
+
+    if (timer <= 0 && timer !== null) {
+      handleQuizSubmit();
+    }
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [timer]);
 
   if (questions.length === 0) {
     return <Spinner />;
@@ -69,9 +104,13 @@ export default function QuizComponent() {
       ) : (
         ''
       )}
-      <div>
+      <div className="d-flex justify-content-between">
         <h6 className="display-6">
           Question {`${index + 1} of ${questions.length}`}
+        </h6>
+
+        <h6>
+          {zfill(Math.floor(timer / 60), 2)}:{zfill(timer % 60, 2)}
         </h6>
       </div>
       <div>
@@ -156,7 +195,7 @@ export default function QuizComponent() {
               className="btn btn-md btn-primary me-3 mt-3 ms-auto"
               onClick={() => (window.location = '/')}
             />
-            {score === null ? (
+            {score === null || timer !== null ? (
               <input
                 type="button"
                 value="Submit"
