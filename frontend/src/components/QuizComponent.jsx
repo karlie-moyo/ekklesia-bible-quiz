@@ -25,7 +25,7 @@ export default function QuizComponent() {
       .get('/questions')
       .then((response) => {
         setQuestions(response.data.data.questions);
-        setTimer(response.data.data.questions.length * 1);
+        setTimer(response.data.data.questions.length * 25);
       })
       .catch((error) => {
         showToast(error);
