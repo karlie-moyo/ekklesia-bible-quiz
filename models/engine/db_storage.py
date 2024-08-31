@@ -19,6 +19,7 @@ DB_USER = getenv('DB_USER')
 DB_PWD = getenv('DB_PWD')
 DB_HOST = getenv('DB_HOST')
 DB_NAME = getenv('DB_NAME')
+DB_PORT = getenv('DB_PORT')
 DB_ENGINE = getenv('DB_ENGINE')
 
 # check if the running instance is a test environment
@@ -29,10 +30,10 @@ if TEST == 'True':
 
 # create database connection
 engine = None
-if DB_ENGINE == 'mysql':
+if DB_ENGINE == 'psql':
     engine = create_engine(
-        'mysql+mysqldb://{}:{}@{}/{}'.format(
-            DB_USER, DB_PWD, DB_HOST, DB_NAME
+        "postgresql+psycopg2://{}:{}@{}:{}/{}".format(
+            DB_USER, DB_PWD, DB_HOST, DB_PORT, DB_NAME
         ),
         pool_pre_ping=True,
         pool_recycle=3600
