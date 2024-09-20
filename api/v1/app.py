@@ -27,6 +27,15 @@ def app_setup_context():
         g.user = None
 
 
+@app.get('/status')
+def status_page():
+    return jsonify({
+        "status": True,
+        "message": "Still up.",
+        "data": None
+    }), 200
+
+
 @app.errorhandler(400)
 def bad_request(error) -> str:
     """Bad Request Error Handler"""
