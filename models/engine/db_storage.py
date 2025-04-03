@@ -19,7 +19,7 @@ DB_USER = getenv('DB_USER')
 DB_PWD = getenv('DB_PWD')
 DB_HOST = getenv('DB_HOST')
 DB_NAME = getenv('DB_NAME')
-DB_PORT = getenv('DB_PORT')
+DB_PORT = getenv('DB_PORT', 3306)
 DB_ENGINE = getenv('DB_ENGINE')
 
 # check if the running instance is a test environment
@@ -35,6 +35,12 @@ if DB_ENGINE == 'psql':
         "postgresql+psycopg2://{}:{}@{}:{}/{}".format(
             DB_USER, DB_PWD, DB_HOST, DB_PORT, DB_NAME
         ),
+        pool_pre_ping=True,
+        pool_recycle=3600
+    )
+elif DB_ENGINE == 'mysql':
+    engine = create_engine(
+        f"mysql+mysqldb://{DB_USER}:{DB_PWD}@{DB_HOST}:{DB_PORT}/{DB_NAME}",
         pool_pre_ping=True,
         pool_recycle=3600
     )
