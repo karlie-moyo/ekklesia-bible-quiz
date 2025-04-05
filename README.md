@@ -2,7 +2,7 @@
 
 ![WhatsApp Image 2023-09-24 at 10 50 40](https://github.com/Karlie-crypto/ekklesia-bible-quiz/assets/110098940/2fcc195b-1905-44d9-bd65-fa28ab3721b4)
 
-The Bible Quiz Web App is an engaging and educational project designed to test and enhance your knowledge of the Bible. This web application provides a platform for users to explore the scriptures, challenge themselves, and deepen their understanding of this timeless text through interactive quizzes. Whether you are a seasoned theologian or a curious beginner, this app offers an opportunity to learn, grow, and connect with others who share your interest in the Bible. Enjoy!!! https://ekklesia.karliemoyo.tech/
+The Bible Quiz Web App is an engaging and educational project designed to test and enhance your knowledge of the Bible. This web application provides a platform for users to explore the scriptures, challenge themselves, and deepen their understanding of this timeless text through interactive quizzes. Whether you are a seasoned theologian or a curious beginner, this app offers an opportunity to learn, grow, and connect with others who share your interest in the Bible. Enjoy!!! https://ekklesia.karliemoyo.tech
 
 | TASK | FILE NAME                                                                 | DESCRIPTION                                                    |
 | ---- | -------------------------------------------------------------------- | --------------------------------------------------------------------|
@@ -25,7 +25,32 @@ The Bible Quiz Web App is an engaging and educational project designed to test a
 | ␜     | [Docker File](./Dockerfile/)                                                  | This Dockerfile uses the official Python 3.12.3 image, sets the working directory to /app, installs dependencies from requirements.txt, installs wkhtmltopdf, copies the application code, exposes port 5000, and starts the application using Gunicorn with a specified configuration.|
 |   ␜  | [.gitignore](./.gitignore)                                                | Your task, Figure it out yourself!!!😂😂😂 |
 
-### AUTHOR:
+```markdown
+### How to Install and Run Eklessia Bible Quiz
+
+1. **Clone the repository:**
+   First, clone the repository to your local machine:
+   ```bash
+   git clone <repository-url>
+   cd eklessia-bible-quiz
+   ```
+
+2. **Install dependencies:**
+   Ensure that you have [Node.js](https://nodejs.org/) installed. Then, install the required dependencies by running:
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+   To run the app locally in development mode, use the following command:
+   ```bash
+   npm run dev
+   ```
+
+4. **Access the quiz:**
+   Open your browser and visit `http://localhost:3000` to start the Bible quiz.
+
+   ### AUTHOR:
 <details>
     <summary>KARLIE MOYO</summary>
     <ul>
@@ -33,13 +58,16 @@ The Bible Quiz Web App is an engaging and educational project designed to test a
             <a href="https://github.com/karlie-moyo">Github</a>
         </li>
         <li>
-            <a href="https://twitter.com/karlieemoyo">Twitter</a>
+            <a href="https://www.linkedin.com/in/karlie-moyo/">Linked-In</a>
         </li>
         <li>
             <a href="https://karlieemoyo@gmail.com">e-mail</a>
         </li>
     </ul>
 </details>
+
+---
+
 
 ---
 
