@@ -6,6 +6,7 @@ from flask_cors import CORS
 from api.v1.views import app_views
 from api.v1.config import AppConfig
 from os import getenv
+from models import storage
 
 
 app = Flask(__name__)
@@ -25,6 +26,12 @@ def app_setup_context():
         g.user = auth.current_user()
     except ValueError:
         g.user = None
+
+
+@app.teardown_appcontext
+def close_storage(exception=None):
+    """Close any active SQLAlchemy sessions"""
+    storage.close()
 
 
 @app.get('/status')
